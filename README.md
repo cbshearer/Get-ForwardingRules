@@ -1,20 +1,23 @@
 # Get-ForwardingRules
 This is a script to check and report on all 6 of the mailbox parameters for forwarding &amp; redirecting.
+
 3 of the methods are properties of the mailbox:
-  ForwardingAddress 
-  ForwardingSmtpAddress
-  DeliverToMailboxAndForward
+  - ForwardingAddress 
+  - ForwardingSmtpAddress
+  - DeliverToMailboxAndForward
+
 3 of the methods are types of rules :
-  DeliverToMailboxAndForward
-  ForwardingSmtpAddress
-  ForwardingAddress
+  - DeliverToMailboxAndForward
+  - ForwardingSmtpAddress
+  - ForwardingAddress
 
 This script will do the following:
-  1. connect to your Microsoft Online / Exchange Online Management
-  2. get all mailboxes in the environment (with get-EXOMailbox) (Note: this can take some time in large environments)
-  3. Loops through all mailboxes, looking for the 2 mailbox properties and the 3 forwarding rules
-  4. If mailboxes with results are found, they are added to a log file (configured on line 12)
-  5. The following information is incleded in the log file:
+  1. Connect to your Microsoft Online / Exchange Online Management
+  2. Get all mailboxes in the environment (with get-EXOMailbox) (Note: this can take some time in large environments)
+  3. Loops each mailbox looking for the mailbox properties used for automatic forwarding
+  5. In each mailbox, loops through all email rules on each mailbox looking for the 3 types of rules used for automatic forwarding
+  6. If mailboxes with results are found, they are added to a log file (configured on line 12)
+  7. The following information is incleded in the log file:
      - Email Address
      - User display name
      - Rule priority (if a rule)
